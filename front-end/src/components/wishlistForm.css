@@ -1,0 +1,95 @@
+.FormContainer {
+  position: relative;
+  width: 600px;
+  background: #ffff;
+  height: 300px;
+  top: 40px;
+  bottom: 300px;
+  right: 100px;
+  left: 380px;
+  border-radius: 5px;
+  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+}
+.Title {
+  color: #5b21b6;
+  text-align: center;
+  font-size: 20pt;
+  margin-top: 20px;
+  padding: 30px;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #c6b9db;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #c6b9db;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.Cancelbtn {
+  border-radius: 4px;
+  background-color: #c4b5fd;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 21px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.Submitbtn {
+  border-radius: 4px;
+  background-color: #fca5a5;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 21px;
+  padding: 20px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+.Cancelbtn,
+.Submitbtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.Cancelbtn,
+.Submitbtn span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.Cancelbtn,
+.Submitbtn:hover span {
+  padding-right: 25px;
+}
+
+.Submitbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.Cancelbtn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
