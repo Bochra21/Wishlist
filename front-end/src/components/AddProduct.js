@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Style.css";
-function ProductForm() {
+import "./Form.css";
+const AddProduct = ({ parentCallback }) => {
+  const [product, setProduct] = useState([]);
+  const [entry, setEntry] = useState([]);
+
   return (
-    <div className="page">
-      <div className="container2">
-        <form className="form">
-          <tr>
-            <td>
-              <label>Name</label>
-              <input placeholder="Product Name" />
-            </td>
-            <td>
-              <label>Price</label>
-              <input placeholder="Price" />
-            </td>{" "}
-            <td>
-              <label>Currency</label>
-              <select>
-                <option> TND </option>
-                <option> USD </option>
-                <option> EURO </option>
-              </select>
-            </td>
-          </tr>
-          <tr>
+    <div>
+      <div className="Formcontainer">
+        <form onSubmit={(e) => e.preventDefault()}>
+          <label className="label">Name</label>
+          <input
+            onChange={(e) => setEntry(e.target.value)}
+            value={entry}
+            type="text"
+            placeholder="Product Name"
+          />
+
+          <label className="label">Price</label>
+
+          <input type="text" placeholder="Price" />
+          <label className="label">Currency</label>
+
+          <select>
+            <option> TND </option>
+            <option> USD </option>
+            <option> EURO </option>
+          </select>
+
+          <tr className="box2">
             {" "}
-            <textarea rows="4" cols="60">
+            Description
+            <textarea rows="4" cols="100">
               {" "}
             </textarea>
           </tr>
-          <tr>
+          <tr className="box2">
             <td>
               <label>Status</label>
 
@@ -38,7 +44,7 @@ function ProductForm() {
               </select>
             </td>
           </tr>
-          <tr>
+          <tr className="box2">
             <td>
               {" "}
               <button className="button1">
@@ -46,7 +52,15 @@ function ProductForm() {
               </button>{" "}
             </td>
             <td>
-              <button className="button2">
+              <button
+                className="button2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setProduct([...product, entry]);
+                  setEntry("");
+                  parentCallback(product);
+                }}
+              >
                 <span>Save </span>{" "}
               </button>{" "}
             </td>
@@ -55,5 +69,5 @@ function ProductForm() {
       </div>
     </div>
   );
-}
-export default ProductForm;
+};
+export default AddProduct;

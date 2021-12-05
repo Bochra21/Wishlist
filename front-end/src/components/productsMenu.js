@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar/navbar.css";
 import "./Style.css";
-import ProductForm from "./AddProduct";
+import AddProduct from "./AddProduct";
 
 //import Wishlists from "./wishlist";
 function Product() {
+  const [childData, setChildData] = useState([]);
+  let handleCallback = (data) => {
+    setChildData(data);
+  };
   const [showForm, ShowForm] = useState(false);
   return (
     <>
@@ -25,7 +29,12 @@ function Product() {
               </li>
             </div>
           </ul>
-          <div>{showForm ? <ProductForm /> : null}</div>
+          {showForm ? <AddProduct parentCallback={handleCallback} /> : null}
+        </div>
+        <div>
+          {childData.map((item, key) => {
+            return <button className="button3">{item}</button>;
+          })}
         </div>
       </nav>
     </>

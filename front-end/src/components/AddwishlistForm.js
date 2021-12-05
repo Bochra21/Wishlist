@@ -1,72 +1,50 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./wishlistForm.css";
 
 import styled from "styled-components";
 import Wishlistmenu from "./wishlistMenu";
 
-//import Wishlists from "./wishlist";
+const Addwishlist = ({ parentCallback }) => {
+  const [wishList, setWishList] = useState([]);
+  const [entry, setEntry] = useState([]);
 
-class Addwishlist extends Component {
-  /*
-  constructor(props) {
-    super(props);
-    this.state = {
-      wishlist: ["wishlist 1", "wishlist 2"],
-    };
-  }
-  addWishlist(e) {
-    e.preventDefault();
-    const wishlist = this.state;
-    const newItem = "test";
-    this.setState({
-      wishlist: [...this.state.wishlist, newItem],
-    });
-  }*/
+  return (
+    <div>
+      <div className="FormContainer">
+        <form className="Form" onSubmit={(e) => e.preventDefault()}>
+          <div className="Title">Add Wishlist </div>
+          <div className="label">Name </div>
+          <input
+            name="Wishlist_Name"
+            type="text"
+            placeholder="Wishlist Name"
+            onChange={(e) => setEntry(e.target.value)}
+            value={entry}
+          />
 
-  //state = { visible: false };
-
-  render() {
-    return (
-      <div>
-        <div className="FormContainer">
-          <form className="Form">
-            <div className="Title">Add Wishlist </div>
-            <div className="label">Name </div>
-            <input
-              name="Wishlist_Name"
-              type="text"
-              placeholder="Wishlist Name"
-            />
-
-            <button
-              className="Submitbtn"
-              onclick={(e) => {
-                this.addWishlist(e);
-              }}
-            >
-              <span>Done </span>
-            </button>
-            <button
-              className="Cancelbtn"
-              type="cancel"
-              onclick="javascript:window.location='/Home';"
-            >
-              <span> Cancel</span>
-            </button>
-          </form>
-        </div>
+          <button
+            className="Submitbtn"
+            onClick={(e) => {
+              e.preventDefault();
+              setWishList([...wishList, entry]);
+              setEntry("");
+              parentCallback(wishList);
+            }}
+          >
+            Done
+          </button>
+          <button
+            className="Cancelbtn"
+            type="cancel"
+            onclick="javascript:window.location='/Home';"
+          >
+            <span> Cancel</span>
+          </button>
+        </form>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Addwishlist;
-
-/*value={WishlistName}
-onChange={(e) => setName(e.target.value)}
-*************************************************
-{wishlist.map((item) => {
-  return <p>key={item}</p>;
-})}
-*/

@@ -8,24 +8,13 @@ body {
 
 .container {
   position: relative;
-  display: flex;
+
   width: 50%;
   background: #ffff;
   height: 50%;
   top: 100px;
   bottom: 500px;
   right: 300px;
-  left: 350px;
-  border-radius: 5px;
-  box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 5px;
-}
-.container2 {
-  background: #ffff;
-  position: relative;
-  top: 100px;
-  bottom: 500px;
-
   left: 350px;
   border-radius: 5px;
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.3);
@@ -143,4 +132,20 @@ body {
 .button2:hover span:after {
   opacity: 1;
   right: 0;
+}
+.button3 {
+  background-color: #ffe7fcf6;
+  border: none;
+  font-size: 23px;
+  color: #5b21b6;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+.button3:hover {
+  background-color: #faecfd;
+  color: #5b21b6;
 }

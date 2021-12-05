@@ -1,41 +1,49 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar/navbar.css";
 import Addwishlist from "./AddwishlistForm";
-import Signin from "./signin";
+import "./Style.css";
 import NavBar from "./navbar";
 //import Wishlists from "./wishlist";
-class Wishlistmenu extends Component {
-  state = { visible: false };
+const Wishlistmenu = () => {
+  const [childData, setChildData] = useState([]);
+  //const [] = usedtate();
+  const [showForm, ShowForm] = useState(false);
+  let handleCallback = (data) => {
+    setChildData(data);
+  };
 
-  render() {
-    return (
-      <>
-        <nav className="WishlistMenu">
-          <div>
-            <ul className="nav-menu2">
-              <div className="nav-item2">
-                <li>
-                  <NavLink
-                    exact
-                    to="/Home"
-                    activeClassName="active"
-                    className="nav-links"
-                    onClick={() => {
-                      this.setState({ visible: true });
-                    }}
-                  >
-                    + Add Wishlist
-                  </NavLink>
-                </li>
+  return (
+    <>
+      <nav className="WishlistMenu">
+        <div>
+          <ul className="nav-menu2">
+            <div className="nav-item2">
+              <li>
+                <NavLink
+                  exact
+                  to="/Home"
+                  activeClassName="active"
+                  className="nav-links"
+                  onClick={() => ShowForm(!showForm)}
+                >
+                  + Add Wishlist
+                </NavLink>
+              </li>
+              <div>
+                {childData.map((item, key) => {
+                  return <button className="button3">{item}</button>;
+                })}
               </div>
-            </ul>
-            <div>{this.state.visible ? <Addwishlist /> : null}</div>
+            </div>
+          </ul>
+          <div>
+            {showForm ? <Addwishlist parentCallback={handleCallback} /> : null}
           </div>
-        </nav>
-      </>
-    );
-  }
-}
+        </div>
+      </nav>
+    </>
+  );
+};
 
 export default Wishlistmenu;
