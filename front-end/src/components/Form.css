@@ -17,6 +17,10 @@ select {
 }
 input[type="text"] {
   width: 30%;
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> 8328435b526c90ec7803b2e38c16a330275b8533
   padding: 14px 20px;
   margin: 8px 0;
   border: #c4b5fd;
